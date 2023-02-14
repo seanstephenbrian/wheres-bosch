@@ -10,6 +10,7 @@ function Garden() {
 
     // state:
     const [cursorClass, setCursorClass] = useState('');
+    const [lastClicked, setLastClicked] = useState();
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
@@ -48,8 +49,14 @@ function Garden() {
     }
 
     function showPopUp(e) {
+        // remove pop-up styling from previously clicked square, if any:
+        if (lastClicked) {
+            lastClicked.classList.remove('clicked-square');
+        }
         const clickedSquare = e.target;
+        // add styling to newly clicked square & save reference in clickedSquare variable:
         clickedSquare.classList.add('clicked-square');
+        setLastClicked(clickedSquare);
     }
 
     // the click grid will contain 5000 squares (50 squares in the y direction, 100 in the x)

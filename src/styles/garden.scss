@@ -1,6 +1,6 @@
 $height: 600vh;
 $width: calc($height * 1.79372197309);
-$cursor-color: #48a55c;
+$accent-color: #48a55c;
 
 // custom cursor classes:
 .right-arrow {
@@ -33,6 +33,22 @@ $cursor-color: #48a55c;
         display: grid;
         grid-template-rows: repeat(50, 1fr);
         grid-template-columns: repeat(100, 1fr);
+
+        .grid-square {
+            position: relative;
+        }
+        
+        .clicked-square::before {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            border: 5px solid $accent-color;
+            border-radius: 10px;
+            width: 110%;
+            left: -9%;
+            height: 110%;
+            top: -9%;
+        }
     }
 
     .painting-container {

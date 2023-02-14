@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function GridSquare(props) {
     // props:
@@ -7,11 +7,17 @@ export default function GridSquare(props) {
         id
     } = props;
 
+    // state:
+    const [clicked, setClicked] = useState(false);
+
     return (
         <div 
             className='grid-square'
             id={id}
-            onClick={handleSquareClick}
+            onClick={(e) => {
+                handleSquareClick(e);
+                setClicked(true);
+            }}
         >    
         </div>
     )
