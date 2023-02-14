@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import GridSquare from './GridSquare';
+
 import ThePainting from '../img/garden.jpg';
 
 import '../styles/garden.scss';
@@ -17,19 +19,19 @@ function Garden() {
     useEffect(() => {
         const scrollAmount = 100;
         // scroll right conditions:
-        if ((mousePosition.x / window.innerWidth) > 0.875) {
+        if ((mousePosition.x / window.innerWidth) > 0.85) {
             window.scrollBy(scrollAmount, 0);
             setCursorClass('right-arrow');
         // scroll down:
-        } else if ((mousePosition.y / window.innerHeight) > 0.875) {
+        } else if ((mousePosition.y / window.innerHeight) > 0.85) {
             window.scrollBy(0, scrollAmount);
             setCursorClass('down-arrow');
         // scroll left:
-        } else if ((mousePosition.x / window.innerWidth) < 0.125) {
+        } else if ((mousePosition.x / window.innerWidth) < 0.15) {
             window.scrollBy(-1*scrollAmount, 0);
             setCursorClass('left-arrow');
         // scroll up:
-        } else if ((mousePosition.y / window.innerHeight) < 0.125) {
+        } else if ((mousePosition.y / window.innerHeight) < 0.15) {
             window.scrollBy(0, -1*scrollAmount);
             setCursorClass('up-arrow');
         // not scrolling:
@@ -45,15 +47,20 @@ function Garden() {
         });
     }
 
+    function showPopUp(e) {
+        const clickedSquare = e.target;
+        clickedSquare.classList.add('clicked-square');
+    }
+
     // the click grid will contain 5000 squares (50 squares in the y direction, 100 in the x)
     let gridSquares = [];
     for (let i = 0; i < 5000; i++) {
         gridSquares.push(
-            <div 
-                className={`grid-square`}
-                data-id={i} 
-                key={i}>    
-            </div>
+            <GridSquare 
+                handleSquareClick={(e) => showPopUp(e)}
+                id={`square-${i}`}
+                key={i}
+            />
         );
     }
 
