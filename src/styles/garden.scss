@@ -10,16 +10,11 @@ $width: calc($height * 1.79372197309);
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 2;
         height: 100%;
         width: 100%;
         display: grid;
         grid-template-rows: repeat(50, 1fr);
         grid-template-columns: repeat(100, 1fr);
-
-        .grid-square {
-            border: 1px solid red;
-        }
     }
 
     .painting-container {
