@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import GridSquare from './GridSquare';
-
 import ThePainting from '../img/garden.jpg';
 
 import '../styles/garden.scss';
@@ -10,15 +8,15 @@ function Garden() {
 
     // state:
     const [cursorClass, setCursorClass] = useState('');
-    const [lastClicked, setLastClicked] = useState();
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
     });
 
     // hooks:
+    // auto-scrolling effect:
     useEffect(() => {
-        const scrollAmount = 100;
+        const scrollAmount = 20;
         // scroll right conditions:
         if ((mousePosition.x / window.innerWidth) > 0.85) {
             window.scrollBy(scrollAmount, 0);
@@ -41,6 +39,7 @@ function Garden() {
         }
     }, [mousePosition]);
 
+    // records mouse position to state:
     function handleMouseMove(e) {
         setMousePosition({
             x: e.clientX,
@@ -48,37 +47,11 @@ function Garden() {
         });
     }
 
-    function showPopUp(e) {
-        // remove pop-up styling from previously clicked square, if any:
-        if (lastClicked) {
-            lastClicked.classList.remove('clicked-square');
-        }
-        const clickedSquare = e.target;
-        // add styling to newly clicked square & save reference in clickedSquare variable:
-        clickedSquare.classList.add('clicked-square');
-        setLastClicked(clickedSquare);
-    }
-
-    // the click grid will contain 5000 squares (50 squares in the y direction, 100 in the x)
-    let gridSquares = [];
-    for (let i = 0; i < 5000; i++) {
-        gridSquares.push(
-            <GridSquare 
-                handleSquareClick={(e) => showPopUp(e)}
-                id={`square-${i}`}
-                key={i}
-            />
-        );
-    }
-
     return (
         <div 
             className={`garden ${cursorClass}`}
             onMouseMove={(e) => handleMouseMove(e)}
         >
-            <div className='grid'>
-                {gridSquares}
-            </div>
             <div className='painting-container'>
                 <img 
                     alt='The Garden of Earthly Delights by Hieronymus Bosch'

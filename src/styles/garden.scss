@@ -24,33 +24,6 @@ $accent-color: #48a55c;
     height: $height;
     width: $width;
 
-    .grid {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        display: grid;
-        grid-template-rows: repeat(50, 1fr);
-        grid-template-columns: repeat(100, 1fr);
-
-        .grid-square {
-            position: relative;
-        }
-        
-        .clicked-square::before {
-            content: '';
-            position: absolute;
-            display: inline-block;
-            border: 5px solid $accent-color;
-            border-radius: 10px;
-            width: 110%;
-            left: -9%;
-            height: 110%;
-            top: -9%;
-        }
-    }
-
     .painting-container {
         height: 100%;
         width: 100%;
