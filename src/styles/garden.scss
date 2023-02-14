@@ -1,0 +1,27 @@
+$height: 600vh;
+$width: calc($height * 1.79372197309);
+
+.garden {
+    position: relative;
+    height: $height;
+    width: $width;
+
+    .grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        height: 100%;
+        width: 100%;
+    }
+
+    .painting-container {
+        height: 100%;
+        width: 100%;
+
+        .painting-itself {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
