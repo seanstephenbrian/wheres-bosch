@@ -1,5 +1,23 @@
 $height: 600vh;
 $width: calc($height * 1.79372197309);
+$cursor-color: #48a55c;
+
+// custom cursor classes:
+.right-arrow {
+    cursor: url('../img/right-arrow.png'), auto;
+}
+
+.left-arrow {
+    cursor: url('../img/left-arrow.png'), auto;
+}
+
+.up-arrow {
+    cursor: url('../img/up-arrow.png'), auto;
+}
+
+.down-arrow {
+    cursor: url('../img/down-arrow.png'), auto;
+}
 
 .garden {
     position: relative;

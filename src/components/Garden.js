@@ -7,6 +7,7 @@ import '../styles/garden.scss';
 function Garden() {
 
     // state:
+    const [cursorClass, setCursorClass] = useState('');
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
@@ -18,18 +19,22 @@ function Garden() {
         // scroll right conditions:
         if ((mousePosition.x / window.innerWidth) > 0.875) {
             window.scrollBy(scrollAmount, 0);
-        }
+            setCursorClass('right-arrow');
         // scroll down:
-        if ((mousePosition.y / window.innerHeight) > 0.875) {
+        } else if ((mousePosition.y / window.innerHeight) > 0.875) {
             window.scrollBy(0, scrollAmount);
-        }
+            setCursorClass('down-arrow');
         // scroll left:
-        if ((mousePosition.x / window.innerWidth) < 0.125) {
+        } else if ((mousePosition.x / window.innerWidth) < 0.125) {
             window.scrollBy(-1*scrollAmount, 0);
-        }
+            setCursorClass('left-arrow');
         // scroll up:
-        if ((mousePosition.y / window.innerHeight) < 0.125) {
+        } else if ((mousePosition.y / window.innerHeight) < 0.125) {
             window.scrollBy(0, -1*scrollAmount);
+            setCursorClass('up-arrow');
+        // not scrolling:
+        } else {
+            setCursorClass('');
         }
     }, [mousePosition]);
 
@@ -54,7 +59,7 @@ function Garden() {
 
     return (
         <div 
-            className="garden"
+            className={`garden ${cursorClass}`}
             onMouseMove={(e) => handleMouseMove(e)}
         >
             <div className='grid'>
