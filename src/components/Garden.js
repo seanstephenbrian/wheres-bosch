@@ -13,9 +13,10 @@ function Garden() {
         x: 0,
         y: 0
     });
-    const [popUpOffset, setPopUpOffset] = useState({
-        x: 100,
-        y: 100
+    const [popUpProps, setPopUpProps] = useState({
+        visible: false,
+        x: 0,
+        y: 0
     });
     const [remainingItems, setRemainingItems] = useState([
         'ITEM 1',
@@ -53,8 +54,13 @@ function Garden() {
 
     // records mouse position to state:
     function handleClick(e) {
-        // IF VALID CLICK...
-        setPopUpOffset({
+        // IF INVALID...
+        
+        // use e.target to determine if the user clicked on one of the choices! 
+        console.log(e.target);
+        // IF VALID...
+        setPopUpProps({
+            visible: true,
             x: e.pageX,
             y: e.pageY
         });
@@ -75,9 +81,9 @@ function Garden() {
         >
             <PopUp
                 options={remainingItems}
-                visible={true}
-                x={popUpOffset.x}
-                y={popUpOffset.y}
+                visible={popUpProps.visible}
+                x={popUpProps.x}
+                y={popUpProps.y}
             />
             <div className='painting-container'>
                 <img 
