@@ -79,6 +79,7 @@ export default function Game() {
             <Garden
                 alertLoaded={startTimer}
                 items={items}
+                itemLocations={itemLocations}
             />
             <TimeDisplay
                 startTime={startTime} 

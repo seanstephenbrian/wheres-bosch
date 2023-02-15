@@ -10,7 +10,8 @@ function Garden(props) {
     // props:
     const {
         alertLoaded, 
-        items
+        items,
+        itemLocations
     } = props;
 
     // state:
@@ -73,21 +74,34 @@ function Garden(props) {
 
     // records mouse position to state:
     function handleClick(e) {
-        // IF INVALID...
-
         // determine if the user clicked on the pop-up circle or one of the choices:
-        if (e.target.classList.contains('pop-up') || e.target.classList.contains('option-text')) {
+        if (e.target.classList.contains('pop-up') || e.target.classList.contains('option')) {
             return;
         }
 
-        // IF VALID...
-        setPopUpProps({
-            visible: true,
-            x: e.pageX,
-            y: e.pageY
+        // logic to determine click validity...
+        let clickValidity = false;
+        itemLocations.forEach((itemLocation) => {
+            // check x coordinates of click against each item location:
+            if (Math.abs(e.pageX - itemLocation.location[0]) <= 100 && Math.abs(e.pageY - itemLocation.location[1]) <= 100) {
+                clickValidity = true;
+            }
+            return;
         });
 
-        console.log([e.pageX, e.pageY]);
+        // if it was a good click, show the pop-up:
+        if (clickValidity === true) {
+            setPopUpProps({
+                visible: true,
+                x: e.pageX,
+                y: e.pageY
+            });
+        } else {
+            // otherwise hide the pop-up:
+            setPopUpProps({
+                visible: false
+            });
+        }
     }
 
     function handleMouseMove(e) {
