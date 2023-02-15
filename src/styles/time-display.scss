@@ -1,0 +1,17 @@
+.time-display {
+    z-index: 2;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .time-text {
+        font-family: 'Novelist';
+        color: var(--site-green);
+        font-size: calc(var(--rvv));
+        background-color: #ddffe3a7;
+        padding: 10px 10px 5px;
+        border: 2px solid var(--site-green);
+        border-radius: 10px;
+    }
+}

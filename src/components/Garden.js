@@ -5,7 +5,13 @@ import ThePainting from '../img/garden.jpg';
 import '../styles/garden.scss';
 import PopUp from './PopUp';
 
-function Garden() {
+function Garden(props) {
+
+    // props:
+    const {
+        alertLoaded, 
+        remainingItems
+    } = props;
 
     // state:
     const [cursorClass, setCursorClass] = useState('');
@@ -18,15 +24,28 @@ function Garden() {
         x: 0,
         y: 0
     });
-    const [remainingItems, setRemainingItems] = useState([
-        'ITEM 1',
-        'ITEM 2',
-        'ITEM 3',
-        'ITEM 4',
-        'ITEM 5'
-    ]);
-
+    
     // hooks:
+    // on initial render:
+    useEffect(() => {
+
+        // only start timer after image is fully loaded:
+        const painting = document.querySelector('.painting-itself');
+        
+        async function loadImage(src, image) {
+            return new Promise((resolve, reject) => {
+                image.onload = () => resolve(image);
+                image.onerror = reject;
+                image.src = src;
+            });
+        }
+
+        loadImage(ThePainting, painting).then(() => {
+            alertLoaded();
+        });
+
+    }, []);
+
     // auto-scrolling effect:
     useEffect(() => {
         const scrollAmount = 20;
@@ -55,9 +74,12 @@ function Garden() {
     // records mouse position to state:
     function handleClick(e) {
         // IF INVALID...
-        
-        // use e.target to determine if the user clicked on one of the choices! 
-        console.log(e.target);
+
+        // determine if the user clicked on the pop-up circle or one of the choices:
+        if (e.target.classList.contains('pop-up') || e.target.classList.contains('option-text')) {
+            return;
+        }
+
         // IF VALID...
         setPopUpProps({
             visible: true,
@@ -89,7 +111,6 @@ function Garden() {
                 <img 
                     alt='The Garden of Earthly Delights by Hieronymus Bosch'
                     className='painting-itself'
-                    src={ThePainting} 
                 />
             </div>
         </div>

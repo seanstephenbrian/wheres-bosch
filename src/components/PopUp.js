@@ -22,9 +22,9 @@ export default function PopUp(props) {
                 }}
             >
                 <div className='choices'>
-                    {options.map(option => {
+                    {options.map((option, index) => {
                         return (
-                            <div className='option-text'>
+                            <div className='option-text' key={`choice-${index}`}>
                                 {option}
                             </div>
                         );
