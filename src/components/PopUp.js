@@ -16,6 +16,7 @@ export default function PopUp(props) {
             <div 
                 className='pop-up'
                 style={{
+                    cursor: 'default',
                     left: x,
                     top: y
                 }}

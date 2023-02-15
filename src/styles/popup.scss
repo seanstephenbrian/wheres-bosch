@@ -8,9 +8,22 @@
 
     .choices {
         position: absolute;
-        right: 125%;
+        right: 110%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 15px;
 
         .option-text {
+            cursor: pointer;
+            background-color: #ddffe3d7;
+            padding: 3px;
+            border: 1px solid var(--site-green);
+            border-radius: 5px;
+            font-family: 'Novelist';
             font-size: calc(0.7*var(--rvv));
             color: var(--site-green);
         }

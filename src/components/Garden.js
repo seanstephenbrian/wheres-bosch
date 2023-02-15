@@ -18,9 +18,11 @@ function Garden() {
         y: 100
     });
     const [remainingItems, setRemainingItems] = useState([
-        'item 1',
-        'item 2',
-        'item 3'
+        'ITEM 1',
+        'ITEM 2',
+        'ITEM 3',
+        'ITEM 4',
+        'ITEM 5'
     ]);
 
     // hooks:
