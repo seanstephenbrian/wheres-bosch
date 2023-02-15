@@ -24,11 +24,23 @@ export default function PopUp(props) {
                 <div className='choices'>
                     {items.map((item, index) => {
                         if (!item.found) {
-                            return (
-                                <div className='option-text' key={`choice-${index}`}>
-                                    {item.name}
-                                </div>
-                            );
+                            if (item.src) {
+                                return (
+                                    <img
+                                        alt={item.name}
+                                        className='option option-image'
+                                        key={`choice-${index}`}
+                                        src={item.src}
+                                    />
+                                )
+                            } else {
+                                return (
+                                    <div className='option option-text' key={`choice-${index}`}>
+                                        {item.name}
+                                    </div>
+                                );
+                            }
+                            
                         }
                     })}
                 </div>

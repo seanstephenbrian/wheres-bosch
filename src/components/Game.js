@@ -4,29 +4,65 @@ import { DateTime } from 'luxon';
 import Garden from '../components/Garden';
 import TimeDisplay from './TimeDisplay';
 
+// item images:
+import Ballhead from '../img/items/ballhead.png';
+import Bosch from '../img/items/bosch.png';
+import Drummer from '../img/items/drummer.png';
+import Reader from '../img/items/reader.png';
+import StabbedHand from '../img/items/hand.png';
+
 export default function Game() {
 
     // state:
     const [items, setItems] = useState([
         {
-            name: 'item 1',
-            found: false
+            name: 'ballhead',
+            found: false,
+            src: Ballhead
         },
         {
-            name: 'item 2',
-            found: false
+            name: 'bosch himself',
+            found: false,
+            src: Bosch
         },
         {
-            name: 'item 3',
-            found: false
+            name: 'drummer',
+            found: false,
+            src: Drummer
         },
         {
-            name: 'item 4',
-            found: false
+            name: 'reading creature',
+            found: false,
+            src: Reader
         },
         {
-            name: 'item 5',
-            found: false
+            name: 'stabbed-hand',
+            found: false,
+            src: StabbedHand
+        }
+    ]);
+
+    // this object will live on the DB:
+    const [itemLocations, setItemLocations] = useState([
+        {
+            name: 'ballhead',
+            location: [4890, 2645]
+        },
+        {
+            name: 'bosch himself',
+            location: [9624, 2211]
+        },
+        {
+            name: 'drummer',
+            location: [9393, 4115] // add a little extra to acceptable x & y
+        },
+        {
+            name: 'reading creature',
+            location: [2263, 5457]
+        },
+        {
+            name: 'stabbed-hand',
+            location: [9024, 5132]
         }
     ]);
 

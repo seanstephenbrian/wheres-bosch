@@ -86,6 +86,8 @@ function Garden(props) {
             x: e.pageX,
             y: e.pageY
         });
+
+        console.log([e.pageX, e.pageY]);
     }
 
     function handleMouseMove(e) {
