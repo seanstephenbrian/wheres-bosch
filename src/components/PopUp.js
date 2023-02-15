@@ -6,7 +6,7 @@ export default function PopUp(props) {
 
     // props:
     const { 
-        options,
+        items,
         visible, 
         x, 
         y } = props;
@@ -22,12 +22,14 @@ export default function PopUp(props) {
                 }}
             >
                 <div className='choices'>
-                    {options.map((option, index) => {
-                        return (
-                            <div className='option-text' key={`choice-${index}`}>
-                                {option}
-                            </div>
-                        );
+                    {items.map((item, index) => {
+                        if (!item.found) {
+                            return (
+                                <div className='option-text' key={`choice-${index}`}>
+                                    {item.name}
+                                </div>
+                            );
+                        }
                     })}
                 </div>
             </div>

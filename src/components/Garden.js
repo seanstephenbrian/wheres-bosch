@@ -10,7 +10,7 @@ function Garden(props) {
     // props:
     const {
         alertLoaded, 
-        remainingItems
+        items
     } = props;
 
     // state:
@@ -102,7 +102,7 @@ function Garden(props) {
             onMouseMove={(e) => handleMouseMove(e)}
         >
             <PopUp
-                options={remainingItems}
+                items={items}
                 visible={popUpProps.visible}
                 x={popUpProps.x}
                 y={popUpProps.y}

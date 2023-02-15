@@ -7,12 +7,27 @@ import TimeDisplay from './TimeDisplay';
 export default function Game() {
 
     // state:
-    const [remainingItems, setRemainingItems] = useState([
-        'ITEM 1',
-        'ITEM 2',
-        'ITEM 3',
-        'ITEM 4',
-        'ITEM 5'
+    const [items, setItems] = useState([
+        {
+            name: 'item 1',
+            found: false
+        },
+        {
+            name: 'item 2',
+            found: false
+        },
+        {
+            name: 'item 3',
+            found: false
+        },
+        {
+            name: 'item 4',
+            found: false
+        },
+        {
+            name: 'item 5',
+            found: false
+        }
     ]);
 
     const [startTime, setStartTime] = useState();
@@ -27,7 +42,7 @@ export default function Game() {
         <>
             <Garden
                 alertLoaded={startTimer}
-                remainingItems={remainingItems}
+                items={items}
             />
             <TimeDisplay
                 startTime={startTime} 
