@@ -99,9 +99,7 @@ function Garden(props) {
             });
         } else {
             // otherwise hide the pop-up:
-            setPopUpProps({
-                visible: false
-            });
+            setPopUpProps({ visible: false });
         }
     }
 
@@ -122,6 +120,7 @@ function Garden(props) {
             <PopUp
                 items={items}
                 itemLocations={itemLocations}
+                hidePopUp={() => setPopUpProps({visible: false})}
                 relayItemFind={relayItemFind}
                 visible={popUpProps.visible}
                 x={popUpProps.x}

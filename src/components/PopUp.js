@@ -6,6 +6,7 @@ export default function PopUp(props) {
 
     // props:
     const { 
+        hidePopUp,
         items,
         itemLocations,
         relayItemFind,
@@ -19,6 +20,7 @@ export default function PopUp(props) {
         const actualLocation = itemLocations.filter(itemLocation => itemLocation.name === itemName)[0];
         if (Math.abs(actualLocation.location[0] - x) < 100 && Math.abs(actualLocation.location[1] - y) < 100) {
             relayItemFind(itemName);
+            hidePopUp();
         }
     }
 
