@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ThePainting from '../img/garden.jpg';
 
 import '../styles/garden.scss';
+import PopUp from './PopUp';
 
 function Garden() {
 
@@ -11,6 +12,10 @@ function Garden() {
     const [mousePosition, setMousePosition] = useState({
         x: 0,
         y: 0
+    });
+    const [popUpOffset, setPopUpOffset] = useState({
+        x: 100,
+        y: 100
     });
 
     // hooks:
@@ -40,6 +45,14 @@ function Garden() {
     }, [mousePosition]);
 
     // records mouse position to state:
+    function handleClick(e) {
+        // IF VALID CLICK...
+        setPopUpOffset({
+            x: e.pageX,
+            y: e.pageY
+        });
+    }
+
     function handleMouseMove(e) {
         setMousePosition({
             x: e.clientX,
@@ -50,8 +63,14 @@ function Garden() {
     return (
         <div 
             className={`garden ${cursorClass}`}
+            onClick={(e) => handleClick(e)}
             onMouseMove={(e) => handleMouseMove(e)}
         >
+            <PopUp
+                visible={true}
+                x={popUpOffset.x}
+                y={popUpOffset.y}
+            />
             <div className='painting-container'>
                 <img 
                     alt='The Garden of Earthly Delights by Hieronymus Bosch'
