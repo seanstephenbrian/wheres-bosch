@@ -74,6 +74,7 @@ function Garden(props) {
     }, [mousePosition]);
 
     function handleClick(e) {
+        console.log([(e.pageX / document.body.scrollWidth), (e.pageY / document.body.scrollHeight)]);
         // first determine if the user clicked on the pop-up circle or one of the choices:
         if (e.target.classList.contains('pop-up') || e.target.classList.contains('option') || e.target.classList.contains('option-image')) {
             return;
@@ -82,8 +83,10 @@ function Garden(props) {
         // then if they clicked on the painting, determine click validity...
         let clickValidity = false;
         itemLocations.forEach((itemLocation) => {
-            // check x & y coordinates of click against each item location:
-            if (Math.abs(e.pageX - itemLocation.location[0]) <= 100 && Math.abs(e.pageY - itemLocation.location[1]) <= 100) {
+
+            // check x & y location of click against each item's saved location:
+            if (Math.abs((e.pageX / document.body.scrollWidth) - itemLocation.location[0]) <= 0.008 && 
+                Math.abs((e.pageY / document.body.scrollHeight) - itemLocation.location[1]) <= 0.008) {
                 // set clickValidity to 'true' if click was within 100px of an item in both x & y directions:
                 clickValidity = true;
             }

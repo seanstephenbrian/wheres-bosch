@@ -46,23 +46,23 @@ export default function Game() {
     const [itemLocations, setItemLocations] = useState([
         {
             name: 'ballhead',
-            location: [4890, 2645]
+            location: [0.461, 0.447]
         },
         {
             name: 'bosch himself',
-            location: [9624, 2211]
+            location: [0.907, 0.373]
         },
         {
             name: 'drummer',
-            location: [9393, 4115] // add a little extra to acceptable x & y
+            location: [0.886, 0.696] // add a little extra to acceptable x & y
         },
         {
             name: 'reading creature',
-            location: [2263, 5457]
+            location: [0.215, 0.922]
         },
         {
             name: 'stabbed-hand',
-            location: [9024, 5132]
+            location: [0.850, 0.871]
         }
     ]);
 

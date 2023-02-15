@@ -18,7 +18,8 @@ export default function PopUp(props) {
     // methods:
     function checkIfFound(itemName) {
         const actualLocation = itemLocations.filter(itemLocation => itemLocation.name === itemName)[0];
-        if (Math.abs(actualLocation.location[0] - x) < 100 && Math.abs(actualLocation.location[1] - y) < 100) {
+        if (Math.abs((x / document.body.scrollWidth) - actualLocation.location[0]) <= 0.008 && 
+            Math.abs((y / document.body.scrollHeight) - actualLocation.location[1]) <= 0.008) {
             relayItemFind(itemName);
             hidePopUp();
         }
