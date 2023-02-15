@@ -17,6 +17,11 @@ function Garden() {
         x: 100,
         y: 100
     });
+    const [remainingItems, setRemainingItems] = useState([
+        'item 1',
+        'item 2',
+        'item 3'
+    ]);
 
     // hooks:
     // auto-scrolling effect:
@@ -67,6 +72,7 @@ function Garden() {
             onMouseMove={(e) => handleMouseMove(e)}
         >
             <PopUp
+                options={remainingItems}
                 visible={true}
                 x={popUpOffset.x}
                 y={popUpOffset.y}

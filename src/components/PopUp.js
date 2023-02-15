@@ -3,8 +3,13 @@ import React, { useEffect, useState } from 'react';
 import '../styles/popup.scss';
 
 export default function PopUp(props) {
+
     // props:
-    const { visible, x, y } = props;
+    const { 
+        options,
+        visible, 
+        x, 
+        y } = props;
 
     if (visible) {
         return (
@@ -15,7 +20,15 @@ export default function PopUp(props) {
                     top: y
                 }}
             >
-                pop-up
+                <div className='choices'>
+                    {options.map(option => {
+                        return (
+                            <div className='option-text'>
+                                {option}
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         );
     } else {
