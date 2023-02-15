@@ -11,7 +11,8 @@ function Garden(props) {
     const {
         alertLoaded, 
         items,
-        itemLocations
+        itemLocations,
+        relayItemFind
     } = props;
 
     // state:
@@ -72,18 +73,18 @@ function Garden(props) {
         }
     }, [mousePosition]);
 
-    // records mouse position to state:
     function handleClick(e) {
-        // determine if the user clicked on the pop-up circle or one of the choices:
-        if (e.target.classList.contains('pop-up') || e.target.classList.contains('option')) {
+        // first determine if the user clicked on the pop-up circle or one of the choices:
+        if (e.target.classList.contains('pop-up') || e.target.classList.contains('option') || e.target.classList.contains('option-image')) {
             return;
         }
 
-        // logic to determine click validity...
+        // then if they clicked on the painting, determine click validity...
         let clickValidity = false;
         itemLocations.forEach((itemLocation) => {
-            // check x coordinates of click against each item location:
+            // check x & y coordinates of click against each item location:
             if (Math.abs(e.pageX - itemLocation.location[0]) <= 100 && Math.abs(e.pageY - itemLocation.location[1]) <= 100) {
+                // set clickValidity to 'true' if click was within 100px of an item in both x & y directions:
                 clickValidity = true;
             }
             return;
@@ -104,6 +105,7 @@ function Garden(props) {
         }
     }
 
+    // records mouse position to state:
     function handleMouseMove(e) {
         setMousePosition({
             x: e.clientX,
@@ -119,6 +121,8 @@ function Garden(props) {
         >
             <PopUp
                 items={items}
+                itemLocations={itemLocations}
+                relayItemFind={relayItemFind}
                 visible={popUpProps.visible}
                 x={popUpProps.x}
                 y={popUpProps.y}

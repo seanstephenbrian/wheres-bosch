@@ -74,12 +74,27 @@ export default function Game() {
         setStartTime(now);
     }
 
+    function updateFoundStatus(itemName) {
+        const updatedItems = items.map(item => {
+            if (item.name === itemName) {
+                return {
+                    ...item,
+                    found: true
+                }
+            } else {
+                return item;
+            }
+        });
+        setItems(updatedItems);
+    }
+
     return (
         <>
             <Garden
                 alertLoaded={startTimer}
                 items={items}
                 itemLocations={itemLocations}
+                relayItemFind={updateFoundStatus}
             />
             <TimeDisplay
                 startTime={startTime} 

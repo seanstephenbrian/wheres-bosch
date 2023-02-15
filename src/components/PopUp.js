@@ -7,10 +7,22 @@ export default function PopUp(props) {
     // props:
     const { 
         items,
+        itemLocations,
+        relayItemFind,
         visible, 
         x, 
         y } = props;
 
+
+    // methods:
+    function checkIfFound(itemName) {
+        const actualLocation = itemLocations.filter(itemLocation => itemLocation.name === itemName)[0];
+        if (Math.abs(actualLocation.location[0] - x) < 100 && Math.abs(actualLocation.location[1] - y) < 100) {
+            relayItemFind(itemName);
+        }
+    }
+
+    // render conditions:
     if (visible) {
         return (
             <div 
@@ -24,23 +36,19 @@ export default function PopUp(props) {
                 <div className='choices'>
                     {items.map((item, index) => {
                         if (!item.found) {
-                            if (item.src) {
-                                return (
+                            return (
+                                <div
+                                    className='option'
+                                    key={`choice-${index}`}
+                                    onClick={() => checkIfFound(item.name)}
+                                >
                                     <img
                                         alt={item.name}
-                                        className='option option-image'
-                                        key={`choice-${index}`}
+                                        className='option-image'
                                         src={item.src}
                                     />
-                                )
-                            } else {
-                                return (
-                                    <div className='option option-text' key={`choice-${index}`}>
-                                        {item.name}
-                                    </div>
-                                );
-                            }
-                            
+                                </div>
+                            ) 
                         }
                     })}
                 </div>
