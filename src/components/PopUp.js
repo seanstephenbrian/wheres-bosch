@@ -57,7 +57,5 @@ export default function PopUp(props) {
                 </div>
             </div>
         );
-    } else {
-        return;
-    }   
+    } else return;
 }

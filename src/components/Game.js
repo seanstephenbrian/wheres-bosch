@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 
 import Garden from '../components/Garden';
+import Legend from '../components/Legend';
 import TimeDisplay from './TimeDisplay';
 
 // item images:
@@ -90,14 +91,17 @@ export default function Game() {
 
     return (
         <>
+            <TimeDisplay
+                startTime={startTime} 
+            />
             <Garden
                 alertLoaded={startTimer}
                 items={items}
                 itemLocations={itemLocations}
                 relayItemFind={updateFoundStatus}
             />
-            <TimeDisplay
-                startTime={startTime} 
+            <Legend 
+                items={items}
             />
         </>
     )

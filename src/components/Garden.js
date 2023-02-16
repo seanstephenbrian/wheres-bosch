@@ -74,7 +74,6 @@ function Garden(props) {
     }, [mousePosition]);
 
     function handleClick(e) {
-        console.log([(e.pageX / document.body.scrollWidth), (e.pageY / document.body.scrollHeight)]);
         // first determine if the user clicked on the pop-up circle or one of the choices:
         if (e.target.classList.contains('pop-up') || e.target.classList.contains('option') || e.target.classList.contains('option-image')) {
             return;
