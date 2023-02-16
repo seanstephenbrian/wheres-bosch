@@ -18,7 +18,7 @@ export default function Game() {
     const [items, setItems] = useState([
         {
             name: 'ballhead',
-            found: false,
+            found: true,
             src: Ballhead
         },
         {
@@ -28,22 +28,35 @@ export default function Game() {
         },
         {
             name: 'drummer',
-            found: false,
+            found: true,
             src: Drummer
         },
         {
             name: 'reading creature',
-            found: false,
+            found: true,
             src: Reader
         },
         {
             name: 'stabbed hand',
-            found: false,
+            found: true,
             src: StabbedHand
         }
     ]);
 
     const [startTime, setStartTime] = useState();
+    const [endTime, setEndTime] = useState();
+
+    // hooks:
+    useEffect(() => {
+        let foundCount = 0;
+        items.forEach(item => {
+            if (item.found) foundCount++;
+        });
+        if (foundCount === 5) {
+            const now = DateTime.now();
+            setEndTime(now);
+        }
+    }, [items]);
 
     // methods:
     function startTimer() {
@@ -65,19 +78,28 @@ export default function Game() {
         setItems(updatedItems);
     }
 
-    return (
-        <>
-            <TimeDisplay
-                startTime={startTime} 
-            />
-            <Garden
-                alertLoaded={startTimer}
-                items={items}
-                relayItemFind={updateFoundStatus}
-            />
-            <Legend 
-                items={items}
-            />
-        </>
-    )
+    if (!endTime) {
+        return (
+            <>
+                <TimeDisplay
+                    startTime={startTime} 
+                />
+                <Garden
+                    alertLoaded={startTimer}
+                    items={items}
+                    relayItemFind={updateFoundStatus}
+                />
+                <Legend 
+                    items={items}
+                />
+            </>
+        )
+    } else if (endTime) {
+        return (
+            <div>
+                {/* victory screen goes here */}
+            </div>
+        )
+    }
+    
 }
