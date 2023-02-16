@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
+import { collection, getDocs } from "firebase/firestore/lite";
 
 import Garden from '../components/Garden';
 import Legend from '../components/Legend';
@@ -11,6 +12,8 @@ import Bosch from '../img/items/bosch.png';
 import Drummer from '../img/items/drummer.png';
 import Reader from '../img/items/reader.png';
 import StabbedHand from '../img/items/hand.png';
+
+import { db as firebaseData } from '../firebase';
 
 export default function Game() {
 
@@ -69,7 +72,19 @@ export default function Game() {
 
     const [startTime, setStartTime] = useState();
 
+    // hooks:
+    useEffect(() => {
+        getData(firebaseData);
+    }, []);
+
     // methods:
+    async function getData(db) {
+        const testCol = collection(db, 'test');
+        const testSnapshot = await getDocs(testCol);
+        const testList = testSnapshot.docs.map(doc => doc.data());
+        console.log(testList);
+    }
+
     function startTimer() {
         const now = DateTime.now();
         setStartTime(now);
