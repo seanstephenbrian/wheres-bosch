@@ -17,6 +17,10 @@ import StabbedHand from '../img/items/hand.png';
 export default function Game() {
 
     // state:
+    const [endTime, setEndTime] = useState();
+
+    const [gameWon, setGameWon] = useState(false);
+
     const [items, setItems] = useState([
         {
             name: 'ballhead',
@@ -45,10 +49,6 @@ export default function Game() {
         }
     ]);
 
-    const [endTime, setEndTime] = useState();
-
-    const [gameWon, setGameWon] = useState(false);
-
     const [startTime, setStartTime] = useState();
 
     const [username, setUsername] = useState('sean');
@@ -71,7 +71,7 @@ export default function Game() {
     useEffect(() => {
         const userTime = endTime - startTime;
         if (!isNaN(userTime)) recordTime(firebaseData, userTime, username);
-    }, [endTime]);
+    }, [endTime, startTime, username]);
 
     // methods:
     function startTimer() {
@@ -97,7 +97,7 @@ export default function Game() {
         return (
             <>
                 <TimeDisplay
-                    endTime={endTime}
+                    endTime={false}
                     gameWon={gameWon}
                     startTime={startTime}
                 />

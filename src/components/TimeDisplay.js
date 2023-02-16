@@ -12,7 +12,7 @@ export default function TimeDisplay(props) {
     const [currentTime, setCurrentTime] = useState(DateTime.now());
 
     // hooks:
-    // on initial render, begin increment currentTime every second:
+    // on initial render, begin to increment currentTime every second:
     const timerRef = useRef();
     useEffect(() => {
         const timer = setInterval(() => {
@@ -24,39 +24,44 @@ export default function TimeDisplay(props) {
         }
     }, []);
 
+    // methods:
+    function formatTime(timeInMs) {
+        if (timeInMs >= 60000) {
+            const min = Math.trunc(timeInMs / 60000);
+            const minRemainder = timeInMs % 60000;
+            const sec = Math.trunc(minRemainder / 1000);
+            return `${min} minutes, ${sec} seconds`;
+        }
+        if (timeInMs < 60000) {
+            const sec = Math.trunc(timeInMs / 1000);
+            return `${sec} seconds`;
+        }
+    }      
+
     // render conditions:
     let timeText;
 
     // render conditions for active games:
-    if (!gameWon && (currentTime - startTime) >= 60000) {
-        timeText = 
-            <>{Math.floor((currentTime - startTime) / 60000)} minutes, {Math.trunc(((currentTime - startTime) % 60000) / 1000)} seconds </>;
-    } else if (!gameWon && (currentTime - startTime) < 60000) {
-        timeText = 
-            <>{Math.trunc((currentTime - startTime) / 1000)} seconds</>
+    if (!gameWon) {
+        timeText = formatTime(currentTime - startTime);
     }
     
-    // if the game is over, clear the interval:
+    // render conditions for won games:
     if (gameWon) {
+        // when the game is over, clear the interval:
         const timer = timerRef.current;
         clearInterval(timer);
-    }
-
-    // render conditions for won games:
-    if (gameWon && (endTime - startTime) >= 60000) {
-        timeText = 
-            <>{Math.floor((endTime - startTime) / 60000)} minutes, {Math.trunc(((endTime - startTime) % 60000) / 1000)} seconds </>;
-    } else if (gameWon && (endTime - startTime) < 60000) {
-        timeText = 
-            <>{Math.trunc((endTime - startTime) / 1000)} seconds</>
+        timeText = formatTime(endTime - startTime);
     }
     
     // render:
-    return (
-        <div className='time-display'>
-            <span className='time-text'>
-                {timeText}
-            </span>
-        </div>
-    )
+    if (startTime) {
+        return (
+            <div className='time-display'>
+                <span className='time-text'>
+                    {timeText}
+                </span>
+            </div>
+        )
+    }
 }

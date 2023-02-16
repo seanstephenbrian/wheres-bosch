@@ -21,7 +21,7 @@ async function getLocations(db) {
 async function getTimes(db) {
     const timesData = collection(db, 'times');
     const snapshot = await getDocs(timesData);
-    const recordedTimes = snapshot.docs.map(doc => doc.data());
+    return snapshot.docs.map(doc => doc.data());
 }
 
 async function recordTime(db, newTime, username) {

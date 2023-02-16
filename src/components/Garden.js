@@ -28,7 +28,6 @@ function Garden(props) {
     });
     
     // hooks:
-    // on initial render:
     useEffect(() => {
 
         // only start timer after image is fully loaded:
@@ -42,9 +41,7 @@ function Garden(props) {
             });
         }
 
-        loadImage(ThePainting, painting).then(() => {
-            alertLoaded();
-        });
+        loadImage(ThePainting, painting).then(() => alertLoaded());
 
     }, []);
 
@@ -85,15 +82,15 @@ function Garden(props) {
         getLocations(firebaseData)
             .then((locations) => {
                 // check click location against retrieved item locations...
-                // if any item is within range, set clickValidity to true:
                 for (const location in locations) {
+                    // if any item is within range, set clickValidity to true:
                     if (Math.abs((e.pageX / document.body.scrollWidth) - locations[location][0]) <= 0.008 &&
                         Math.abs((e.pageY / document.body.scrollHeight) - locations[location][1]) <= 0.008) {
                             clickValidity = true;
                     } 
                 }
                 
-                // if it was a good click, show the pop-up:
+                // if it was a valid click, show the pop-up:
                 if (clickValidity === true) {
                     setPopUpProps({
                         visible: true,

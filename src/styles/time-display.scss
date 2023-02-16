@@ -4,10 +4,14 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .time-text {
         font-family: 'Novelist';
         color: var(--site-green);
+        text-align: center;
         font-size: calc(var(--rvv));
         background-color: #ddffe3d5;
         padding: 10px 10px 5px;

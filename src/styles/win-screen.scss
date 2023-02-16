@@ -16,6 +16,8 @@
     }
 }
 
+$chart-gap: calc(0.5*var(--rvv));
+
 .win-screen {
     position: relative;
     height: 100vh;
@@ -35,12 +37,94 @@
         animation: 3s ease-out 0s fadeIn forwards;
     }
 
+    .win-details,
+    .all-times {
+        z-index: 1;
+        width: 20vw;
+        min-width: 300px;
+        position: relative;
+        top: 15vh;
+        left: calc(10%);
+        transform: translateX(-10%); 
+        font-family: 'Novelist';
+        color: var(--site-blue);
+        background-color: #c9fdffc4;
+    }
+
+    .win-details {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: calc(0.6*var(--rvv));
+        padding: 10px 10px 5px;
+        border: 3px solid var(--site-blue);
+        border-radius: 10px;
+    }
+
+    .all-times {
+        position: relative;
+        font-size: calc(0.6*var(--rvv));
+        padding: 10px 10px 5px;
+        border: 3px solid var(--site-blue);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .time-entry {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas: "rank name time";
+            column-gap: $chart-gap;
+
+            .rank-label {
+                text-align: center;
+            }
+            
+            .rank-label,
+            .name-label,
+            .time-label {
+                text-decoration: underline;
+            }
+
+            .rank {
+                grid-area: rank;
+                text-align: center;
+            }
+
+            .name {
+                grid-area: name;
+            }
+
+            .time {
+                grid-area: time;
+            }
+        }
+    }
+
     .bosch-portrait {
+        max-width: 70vw;
         position: absolute;
         bottom: 0;
         right: 0;
-        height: 70vh;
+        max-height: 70vh;
         transform: translateX(100%);
         animation: 1.8s ease-in-out 0.4s slideIn forwards;
+    }
+}
+
+// on smaller screens, center the win details:
+
+@media screen and (max-width: 1000px) {
+
+    .win-screen {
+
+        .win-details,
+        .all-times {
+            left: calc(50%);
+            transform: translateX(-50%);
+        }
     }
 }
