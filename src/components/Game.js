@@ -5,6 +5,7 @@ import { db as firebaseData, getTimes, recordTime } from '../firebase';
 import Garden from '../components/Garden';
 import Legend from '../components/Legend';
 import TimeDisplay from './TimeDisplay';
+import WinScreen from './WinScreen';
 
 // item images:
 import Ballhead from '../img/items/ballhead.png';
@@ -44,9 +45,11 @@ export default function Game() {
         }
     ]);
 
-    const [startTime, setStartTime] = useState();
-
     const [endTime, setEndTime] = useState();
+
+    const [gameWon, setGameWon] = useState(false);
+
+    const [startTime, setStartTime] = useState();
 
     const [username, setUsername] = useState('sean');
     
@@ -60,6 +63,7 @@ export default function Game() {
         if (foundCount === 5) {
             const now = DateTime.now();
             setEndTime(now);
+            setGameWon(true);
         }
     }, [items]);
 
@@ -93,7 +97,9 @@ export default function Game() {
         return (
             <>
                 <TimeDisplay
-                    startTime={startTime} 
+                    endTime={endTime}
+                    gameWon={gameWon}
+                    startTime={startTime}
                 />
                 <Garden
                     alertLoaded={startTimer}
@@ -107,9 +113,14 @@ export default function Game() {
         )
     } else if (endTime) {
         return (
-            <div className='winning-screen'>
-                {/* victory screen goes here */}
-            </div>
+            <>
+                <TimeDisplay
+                    endTime={endTime}
+                    gameWon={gameWon}
+                    startTime={startTime}
+                />
+                <WinScreen />
+            </>
         )
     }
 }

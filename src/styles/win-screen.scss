@@ -1,0 +1,46 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.win-screen {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: black;
+
+    .win-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-image: url('../img/win-screen-bg.jpg');
+        background-size: cover;
+        opacity: 0;
+        animation: 3s ease-out 0s fadeIn forwards;
+    }
+
+    .bosch-portrait {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 70vh;
+        transform: translateX(100%);
+        animation: 1.8s ease-in-out 0.4s slideIn forwards;
+    }
+}
