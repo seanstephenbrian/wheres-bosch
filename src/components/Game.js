@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
+import { db as firebaseData, getTimes, recordTime } from '../firebase';
 
 import Garden from '../components/Garden';
 import Legend from '../components/Legend';
@@ -44,9 +45,13 @@ export default function Game() {
     ]);
 
     const [startTime, setStartTime] = useState();
+
     const [endTime, setEndTime] = useState();
 
+    const [username, setUsername] = useState('sean');
+    
     // hooks:
+    // check for winning conditions:
     useEffect(() => {
         let foundCount = 0;
         items.forEach(item => {
@@ -57,6 +62,12 @@ export default function Game() {
             setEndTime(now);
         }
     }, [items]);
+
+    // if an endTime is set, record user's time in firebase db:
+    useEffect(() => {
+        const userTime = endTime - startTime;
+        if (!isNaN(userTime)) recordTime(firebaseData, userTime, username);
+    }, [endTime]);
 
     // methods:
     function startTimer() {
@@ -96,10 +107,9 @@ export default function Game() {
         )
     } else if (endTime) {
         return (
-            <div>
+            <div className='winning-screen'>
                 {/* victory screen goes here */}
             </div>
         )
     }
-    
 }

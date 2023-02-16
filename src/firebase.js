@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore/lite";
-import { collection, getDocs } from "firebase/firestore/lite";
+import { collection, getDocs, addDoc } from "firebase/firestore/lite";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAsLZNweL1IpLxLQhVtJaWrAa4ki04Lyeo",
@@ -18,9 +18,22 @@ async function getLocations(db) {
     return locations[0];
 }
 
+async function getTimes(db) {
+    const timesData = collection(db, 'times');
+    const snapshot = await getDocs(timesData);
+    const recordedTimes = snapshot.docs.map(doc => doc.data());
+}
+
+async function recordTime(db, newTime, username) {
+    const docRef = await addDoc(collection(db, 'times'), {
+        time: newTime,
+        name: username
+    });
+}
+
 // initialize firebase:
 const app = initializeApp(firebaseConfig);
 
 // exports:
 export const db = getFirestore(app);
-export { getLocations };
+export { getLocations, getTimes, recordTime };
