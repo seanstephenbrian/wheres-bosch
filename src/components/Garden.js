@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { collection, getDocs } from "firebase/firestore/lite";
+import { db as firebaseData } from '../firebase';
 
 import ThePainting from '../img/garden.jpg';
 
@@ -11,7 +13,6 @@ function Garden(props) {
     const {
         alertLoaded, 
         items,
-        itemLocations,
         relayItemFind
     } = props;
 
@@ -73,6 +74,15 @@ function Garden(props) {
         }
     }, [mousePosition]);
 
+    // methods:
+
+    async function getLocations(db) {
+        const data = collection(db, 'data');
+        const snapshot = await getDocs(data);
+        const locations = snapshot.docs.map(doc => doc.data());
+        return locations[0];
+    }
+
     function handleClick(e) {
         // first determine if the user clicked on the pop-up circle or one of the choices:
         if (e.target.classList.contains('pop-up') || e.target.classList.contains('option') || e.target.classList.contains('option-image')) {
@@ -81,28 +91,30 @@ function Garden(props) {
 
         // then if they clicked on the painting, determine click validity...
         let clickValidity = false;
-        itemLocations.forEach((itemLocation) => {
-
-            // check x & y location of click against each item's saved location:
-            if (Math.abs((e.pageX / document.body.scrollWidth) - itemLocation.location[0]) <= 0.008 && 
-                Math.abs((e.pageY / document.body.scrollHeight) - itemLocation.location[1]) <= 0.008) {
-                // set clickValidity to 'true' if click was within 100px of an item in both x & y directions:
-                clickValidity = true;
+        getLocations(firebaseData)
+            .then((locations) => {
+                // check click location against retrieved item locations...
+                // if any item is within range, set clickValidity to true:
+                for (const location in locations) {
+                    if (Math.abs((e.pageX / document.body.scrollWidth) - locations[location][0]) <= 0.008 &&
+                        Math.abs((e.pageY / document.body.scrollHeight) - locations[location][1]) <= 0.008) {
+                            clickValidity = true;
+                    } 
+                }
+                
+                // if it was a good click, show the pop-up:
+                if (clickValidity === true) {
+                    setPopUpProps({
+                        visible: true,
+                        x: e.pageX,
+                        y: e.pageY
+                    });
+                } else {
+                    // otherwise hide the pop-up:
+                    setPopUpProps({ visible: false });
+                }
             }
-            return;
-        });
-
-        // if it was a good click, show the pop-up:
-        if (clickValidity === true) {
-            setPopUpProps({
-                visible: true,
-                x: e.pageX,
-                y: e.pageY
-            });
-        } else {
-            // otherwise hide the pop-up:
-            setPopUpProps({ visible: false });
-        }
+        );    
     }
 
     // records mouse position to state:
@@ -121,7 +133,6 @@ function Garden(props) {
         >
             <PopUp
                 items={items}
-                itemLocations={itemLocations}
                 hidePopUp={() => setPopUpProps({visible: false})}
                 relayItemFind={relayItemFind}
                 visible={popUpProps.visible}

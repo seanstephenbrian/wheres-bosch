@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import { collection, getDocs } from "firebase/firestore/lite";
+import { db as firebaseData } from '../firebase';
 
 import Garden from '../components/Garden';
 import Legend from '../components/Legend';
@@ -12,8 +13,6 @@ import Bosch from '../img/items/bosch.png';
 import Drummer from '../img/items/drummer.png';
 import Reader from '../img/items/reader.png';
 import StabbedHand from '../img/items/hand.png';
-
-import { db as firebaseData } from '../firebase';
 
 export default function Game() {
 
@@ -40,7 +39,7 @@ export default function Game() {
             src: Reader
         },
         {
-            name: 'stabbed-hand',
+            name: 'stabbed hand',
             found: false,
             src: StabbedHand
         }
@@ -65,7 +64,7 @@ export default function Game() {
             location: [0.215, 0.922]
         },
         {
-            name: 'stabbed-hand',
+            name: 'stabbed hand',
             location: [0.850, 0.871]
         }
     ]);
@@ -74,15 +73,15 @@ export default function Game() {
 
     // hooks:
     useEffect(() => {
-        getData(firebaseData);
+        getLocations(firebaseData);
     }, []);
 
     // methods:
-    async function getData(db) {
-        const testCol = collection(db, 'test');
-        const testSnapshot = await getDocs(testCol);
-        const testList = testSnapshot.docs.map(doc => doc.data());
-        console.log(testList);
+    async function getLocations(db) {
+        const data = collection(db, 'data');
+        const snapshot = await getDocs(data);
+        const locations = snapshot.docs.map(doc => doc.data());
+        return locations;
     }
 
     function startTimer() {
@@ -112,7 +111,6 @@ export default function Game() {
             <Garden
                 alertLoaded={startTimer}
                 items={items}
-                itemLocations={itemLocations}
                 relayItemFind={updateFoundStatus}
             />
             <Legend 
