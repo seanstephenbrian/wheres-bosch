@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { db as firebaseData, getLocations } from '../firebase';
 
 import '../styles/popup.scss';
 
@@ -8,7 +9,6 @@ export default function PopUp(props) {
     const { 
         hidePopUp,
         items,
-        itemLocations,
         relayItemFind,
         visible, 
         x, 
@@ -17,12 +17,23 @@ export default function PopUp(props) {
 
     // methods:
     function checkIfFound(itemName) {
-        const actualLocation = itemLocations.filter(itemLocation => itemLocation.name === itemName)[0];
-        if (Math.abs((x / document.body.scrollWidth) - actualLocation.location[0]) <= 0.008 && 
-            Math.abs((y / document.body.scrollHeight) - actualLocation.location[1]) <= 0.008) {
-            relayItemFind(itemName);
-            hidePopUp();
-        }
+        getLocations(firebaseData)
+            .then((locations) => {
+                // first get the actual location of the item the user clicked on:
+                let actualLocation;
+                for (const location in locations) {
+                    if (location === itemName) {
+                        actualLocation = locations[location];
+                    }
+                }
+                // then if that item is located within the range of the pop-up window,
+                // mark the item as 'found' and relay that info up to Game state:
+                if (Math.abs((x / document.body.scrollWidth) - actualLocation[0]) <= 0.008 && 
+                    Math.abs((y / document.body.scrollHeight) - actualLocation[1]) <= 0.008) {
+                    relayItemFind(itemName);
+                    hidePopUp();
+                }
+            });
     }
 
     // render conditions:

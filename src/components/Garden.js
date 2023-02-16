@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from "firebase/firestore/lite";
-import { db as firebaseData } from '../firebase';
+import { db as firebaseData, getLocations } from '../firebase';
 
 import ThePainting from '../img/garden.jpg';
 
@@ -75,21 +74,13 @@ function Garden(props) {
     }, [mousePosition]);
 
     // methods:
-
-    async function getLocations(db) {
-        const data = collection(db, 'data');
-        const snapshot = await getDocs(data);
-        const locations = snapshot.docs.map(doc => doc.data());
-        return locations[0];
-    }
-
     function handleClick(e) {
         // first determine if the user clicked on the pop-up circle or one of the choices:
         if (e.target.classList.contains('pop-up') || e.target.classList.contains('option') || e.target.classList.contains('option-image')) {
             return;
         }
 
-        // then if they clicked on the painting, determine click validity...
+        // if they clicked on the painting, determine click validity...
         let clickValidity = false;
         getLocations(firebaseData)
             .then((locations) => {
