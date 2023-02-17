@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import { db as firebaseData, getTimes, recordTime } from '../firebase';
 
+import FoundMarkers from '../components/FoundMarkers';
 import Garden from '../components/Garden';
 import Legend from '../components/Legend';
 import TimeDisplay from './TimeDisplay';
@@ -105,6 +106,9 @@ export default function Game() {
                     alertLoaded={startTimer}
                     items={items}
                     relayItemFind={updateFoundStatus}
+                />
+                <FoundMarkers
+                    gameState={items}
                 />
                 <Legend 
                     items={items}
