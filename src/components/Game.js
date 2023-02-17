@@ -6,6 +6,7 @@ import FoundMarkers from '../components/FoundMarkers';
 import Garden from '../components/Garden';
 import Legend from '../components/Legend';
 import TimeDisplay from './TimeDisplay';
+import WelcomeScreen from './WelcomeScreen';
 import WinScreen from './WinScreen';
 
 // item images:
@@ -49,6 +50,8 @@ export default function Game() {
             src: StabbedHand
         }
     ]);
+
+    const [onWelcomeScreen, setOnWelcomeScreen] = useState(true);
 
     const [startTime, setStartTime] = useState();
 
@@ -94,7 +97,12 @@ export default function Game() {
         setItems(updatedItems);
     }
 
-    if (!endTime) {
+    // render conditions
+    if (onWelcomeScreen) {
+        return (
+            <WelcomeScreen />
+        )
+    } else if (!onWelcomeScreen && !endTime) {
         return (
             <>
                 <TimeDisplay
@@ -115,7 +123,7 @@ export default function Game() {
                 />
             </>
         )
-    } else if (endTime) {
+    } else if (!onWelcomeScreen && endTime) {
         return (
             <>
                 <TimeDisplay

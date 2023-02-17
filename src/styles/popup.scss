@@ -4,7 +4,7 @@
     width: 200px;
     height: 200px;
     transform: translate(-50%, -50%);
-    outline: 4px solid #48a55cc5;
+    box-shadow: 0 0 0 4px #48a55cc5;
     border: 4px solid #c5ffcfaa;
     border-radius: 50%;
 
@@ -25,7 +25,6 @@
             padding: 3px;
             border: 2px solid var(--site-green);
             border-radius: 5px;
-            font-family: 'Novelist';
             font-size: calc(0.7*var(--rvv));
             color: var(--site-green);
             transition: transform 0.2s ease-in-out;

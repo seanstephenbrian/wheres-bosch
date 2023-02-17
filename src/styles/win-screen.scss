@@ -46,9 +46,11 @@ $chart-gap: calc(0.5*var(--rvv));
         top: 15vh;
         left: calc(10%);
         transform: translateX(-10%); 
-        font-family: 'Novelist';
         color: var(--site-blue);
         background-color: #c9fdffc4;
+        padding: 10px 10px 5px;
+        border: 3px solid var(--site-blue);
+        border-radius: 10px;
     }
 
     .win-details {
@@ -57,17 +59,11 @@ $chart-gap: calc(0.5*var(--rvv));
         align-items: center;
         text-align: center;
         font-size: calc(0.6*var(--rvv));
-        padding: 10px 10px 5px;
-        border: 3px solid var(--site-blue);
-        border-radius: 10px;
     }
 
     .all-times {
         position: relative;
         font-size: calc(0.6*var(--rvv));
-        padding: 10px 10px 5px;
-        border: 3px solid var(--site-blue);
-        border-radius: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -116,7 +112,6 @@ $chart-gap: calc(0.5*var(--rvv));
 }
 
 // on smaller screens, center the win details:
-
 @media screen and (max-width: 1000px) {
 
     .win-screen {
