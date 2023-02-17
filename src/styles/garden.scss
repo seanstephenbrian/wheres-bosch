@@ -2,6 +2,15 @@ $height: 600vh;
 $width: calc($height * 1.79372197309);
 $site-green: #48a55c;
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 // custom cursor classes:
 .right-arrow {
     cursor: url('../img/right-arrow.png'), auto;
@@ -20,6 +29,7 @@ $site-green: #48a55c;
 }
 
 .garden {
+    background-color: black;
     position: relative;
     height: $height;
     width: $width;
@@ -29,6 +39,8 @@ $site-green: #48a55c;
         width: 100%;
 
         .painting-itself {
+            opacity: 0;
+            animation: 4s ease-in-out 0s fadeIn forwards;
             height: 100%;
             width: 100%;
         }

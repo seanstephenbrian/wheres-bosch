@@ -58,7 +58,7 @@ export default function Game() {
 
     const [startTime, setStartTime] = useState();
 
-    const [username, setUsername] = useState();
+    const [username, setUsername] = useState('');
     
     // hooks:
     // check for winning conditions:
