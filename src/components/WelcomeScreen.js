@@ -2,14 +2,24 @@ import React from 'react';
 
 import '../styles/welcome-screen.scss';
 
+import Bosch from '../img/items/bosch.png';
 import LeftPanel from '../img/left-panel.jpg';
 import RightPanel from '../img/right-panel.jpg';
 
-export default function WelcomeScreen() {
-    
-    // methods:
-    function startGame() {
+export default function WelcomeScreen(props) {
+    // props:
+    const { startGame } = props;
 
+    // methods:
+    function transitionOut() {
+        const messages = document.querySelector('.messages');
+        messages.classList.add('fade-out');
+
+        const leftPanel = document.querySelector('.left-panel');
+        leftPanel.classList.add('open-left');
+
+        const rightPanel = document.querySelector('.right-panel');
+        rightPanel.classList.add('open-right');
     }
 
     return (
@@ -29,6 +39,14 @@ export default function WelcomeScreen() {
                 </div>
             </div>
             <div className='messages'>
+                <div className='message wheres-bosch'>
+                    <div>WHERE'S BOSCH?</div>
+                    <img 
+                        alt='possible face of Hieronymus Bosch'
+                        className='bosch-portrait'
+                        src={Bosch}
+                    />
+                </div>
                 <div className='message message-1'>
                     There's much to discover in the Garden of Earthly Delights...
                 </div>
@@ -43,9 +61,9 @@ export default function WelcomeScreen() {
                 </div>
                 <div 
                     className='message click-to-begin'
-                    onClick={startGame}
+                    onClick={transitionOut}
                 >
-                   Click here to begin.
+                   Click here to begin
                 </div>
             </div>
         </div>

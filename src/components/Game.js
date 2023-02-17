@@ -78,6 +78,10 @@ export default function Game() {
     }, [endTime, startTime, username]);
 
     // methods:
+    function startGame() {
+        setOnWelcomeScreen(false);
+    }
+
     function startTimer() {
         const now = DateTime.now();
         setStartTime(now);
@@ -100,7 +104,9 @@ export default function Game() {
     // render conditions
     if (onWelcomeScreen) {
         return (
-            <WelcomeScreen />
+            <WelcomeScreen
+                startGame={startGame}
+            />
         )
     } else if (!onWelcomeScreen && !endTime) {
         return (
