@@ -8,7 +8,7 @@ export default function FoundMarkers(props) {
     const { gameState } = props;
 
     // state:
-    const [itemLocations, setItemLocations] = useState([]);
+    const [items, setItems] = useState([]);
 
     // hooks:
 
@@ -17,7 +17,7 @@ export default function FoundMarkers(props) {
         // retrieve item locations from firebase:
         getLocations(firebaseData)
             // then save item objects with name, location, and found status fields
-            // to the itemLocations array:
+            // to the items array:
             .then((locations) => {
                 let locationData = [];
                 for (const location in locations) {
@@ -30,32 +30,32 @@ export default function FoundMarkers(props) {
                         found: foundStatus
                     });
                 }
-                setItemLocations(locationData);
+                setItems(locationData);
             });
     }, []);
 
     // whenever gameState changes:
     useEffect(() => {
-        const updatedItemLocations = itemLocations.map((itemLocation) => {
+        const updatedItems = items.map((item) => {
             // only update not-found items:
-            if (!itemLocation.found) {
+            if (!item.found) {
                 let updatedItem;
                 gameState.forEach(gameItem => {
-                    if (itemLocation.name === gameItem.name) {
+                    if (item.name === gameItem.name) {
                         updatedItem = {
-                            name: itemLocation.name,
-                            location: itemLocation.location,
+                            name: item.name,
+                            location: item.location,
                             found: gameItem.found // <-- use current found status from Game state 
                         }
                     }
                 });
                 return updatedItem;
             // if item is already marked as found, keep it as is:
-            } else if (itemLocation.found) {
-                return itemLocation;
+            } else if (item.found) {
+                return item;
             }
         });
-        setItemLocations(updatedItemLocations);
+        setItems(updatedItems);
     }, [gameState]);
 
     // methods:
@@ -71,12 +71,22 @@ export default function FoundMarkers(props) {
 
     return (
         <div className='found-markers'>
-            {itemLocations.map((itemLocation) => {
-                return (
-                    <div>
-                        {itemLocation.name}, {itemLocation.found ? 'true' : 'false'}
-                    </div>
-                )
+            {items.map((item, index) => {
+                if (item.found) {
+                    const xShift = item.location[0] * document.body.scrollWidth;
+                    const yShift = item.location[1] * document.body.scrollHeight;
+                    return (
+                        <div 
+                            className='found-marker'
+                            key={index}
+                            style={{
+                                left: xShift,
+                                top: yShift
+                            }}
+                        >
+                        </div>
+                    )
+                }
             })}
         </div>
     )

@@ -1,6 +1,19 @@
 .found-markers {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
+    width: 100%;
+    height: 100%;
+
+    .found-marker {
+        z-index: 1;
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        transform: translate(-50%, -50%);
+        outline: 4px solid #4abdc1;
+        border: 4px solid var(--site-blue);
+        border-radius: 50%;
+        background-color: #c9fdff44;
+    }
 }

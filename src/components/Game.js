@@ -30,7 +30,7 @@ export default function Game() {
         },
         {
             name: 'bosch himself',
-            found: true,
+            found: false,
             src: Bosch
         },
         {
