@@ -25,27 +25,27 @@ export default function Game() {
     const [items, setItems] = useState([
         {
             name: 'ballhead',
-            found: true,
+            found: false,
             src: Ballhead
         },
         {
             name: 'bosch himself',
-            found: false,
+            found: true,
             src: Bosch
         },
         {
             name: 'drummer',
-            found: true,
+            found: false,
             src: Drummer
         },
         {
             name: 'reading creature',
-            found: true,
+            found: false,
             src: Reader
         },
         {
             name: 'stabbed hand',
-            found: true,
+            found: false,
             src: StabbedHand
         }
     ]);
