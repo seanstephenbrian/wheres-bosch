@@ -8,7 +8,7 @@ import RightPanel from '../img/right-panel.jpg';
 
 export default function WelcomeScreen(props) {
     // props:
-    const { startGame } = props;
+    const { getUsername } = props;
 
     // methods:
     function transitionOut() {
@@ -20,6 +20,8 @@ export default function WelcomeScreen(props) {
 
         const rightPanel = document.querySelector('.right-panel');
         rightPanel.classList.add('open-right');
+
+        setTimeout(getUsername, 3000);
     }
 
     return (

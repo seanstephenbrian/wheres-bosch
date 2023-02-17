@@ -15,6 +15,7 @@ import Bosch from '../img/items/bosch.png';
 import Drummer from '../img/items/drummer.png';
 import Reader from '../img/items/reader.png';
 import StabbedHand from '../img/items/hand.png';
+import UsernameScreen from './UsernameScreen';
 
 export default function Game() {
 
@@ -53,9 +54,11 @@ export default function Game() {
 
     const [onWelcomeScreen, setOnWelcomeScreen] = useState(true);
 
+    const [onUsernameScreen, setOnUsernameScreen] = useState(false);
+
     const [startTime, setStartTime] = useState();
 
-    const [username, setUsername] = useState('sean');
+    const [username, setUsername] = useState();
     
     // hooks:
     // check for winning conditions:
@@ -78,8 +81,13 @@ export default function Game() {
     }, [endTime, startTime, username]);
 
     // methods:
-    function startGame() {
+    function getUsername() {
         setOnWelcomeScreen(false);
+        setOnUsernameScreen(true);
+    }
+
+    function startGame() {
+        setOnUsernameScreen(false);
     }
 
     function startTimer() {
@@ -105,10 +113,20 @@ export default function Game() {
     if (onWelcomeScreen) {
         return (
             <WelcomeScreen
-                startGame={startGame}
+                getUsername={getUsername}
             />
         )
-    } else if (!onWelcomeScreen && !endTime) {
+    } else if (onUsernameScreen) {
+        return (
+            <UsernameScreen
+                startGame={startGame}
+                updateUsername={(e) => {
+                    setUsername(e.target.value);
+                }}
+                username={username}
+            />
+        )
+    } else if (!onWelcomeScreen && !onUsernameScreen && !endTime) {
         return (
             <>
                 <TimeDisplay
@@ -129,7 +147,7 @@ export default function Game() {
                 />
             </>
         )
-    } else if (!onWelcomeScreen && endTime) {
+    } else if (!onWelcomeScreen && !onUsernameScreen && endTime) {
         return (
             <>
                 <TimeDisplay
