@@ -52,7 +52,7 @@
 
 .welcome-screen {
     position: relative;
-    background-color: black;
+    background-color: white;
     background-image: url('../img/welcome-bg.jpg');
     background-size: contain;
     height: 100vh;
@@ -174,8 +174,8 @@
             transform: scale(1.05);
         }
     }
+}
 
-    .fade-out {
-        animation: 3.5s ease-in-out 0s fadeOut forwards;
-    }
+.fade-out {
+    animation: 5s linear 0s fadeOut forwards;
 }

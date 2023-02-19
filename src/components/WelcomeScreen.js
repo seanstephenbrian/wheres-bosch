@@ -12,8 +12,8 @@ export default function WelcomeScreen(props) {
 
     // methods:
     function transitionOut() {
-        const messages = document.querySelector('.messages');
-        messages.classList.add('fade-out');
+        const welcomeScreen = document.querySelector('.welcome-screen');
+        welcomeScreen.classList.add('fade-out');
 
         const leftPanel = document.querySelector('.left-panel');
         leftPanel.classList.add('open-left');
@@ -21,7 +21,7 @@ export default function WelcomeScreen(props) {
         const rightPanel = document.querySelector('.right-panel');
         rightPanel.classList.add('open-right');
 
-        setTimeout(getUsername, 3000);
+        setTimeout(getUsername, 6000);
     }
 
     return (
