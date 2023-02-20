@@ -11,7 +11,9 @@ export default function WinScreen() {
 
     // retrieve all times from firestore when component mounts:
     useEffect(() => {
-        getTimes(firebaseData)
+        // wait 3 sec before requesting data to give firebase time to update:
+        setTimeout(() => {
+            getTimes(firebaseData)
             .then((retrievedTimes) => {
                 // sort the retrieved times in increasing order:
                 retrievedTimes.sort((a, b) => {
@@ -28,6 +30,7 @@ export default function WinScreen() {
                 retrievedTimes.splice(10);
                 setAllTimes(retrievedTimes);
             });
+        }, 3000);
     }, []);
 
     // methods:
@@ -42,15 +45,17 @@ export default function WinScreen() {
             const sec = Math.trunc(timeInMs / 1000).toString().padStart(2, '0');
             return `00:${sec}`;
         }
-    }      
+    }
 
-    return (
-        <div className='win-screen'>
-            <div className='win-bg'></div>
-            <div className='win-details'>
+    let allTimesContent;
+    let introText;
+    if (allTimes.length !== 0) {
+        introText =
+            <>
                 You found everything!<br />
                 See how your time ranks:
-            </div>
+            </>;
+        allTimesContent = 
             <div className='all-times'>
                 <div className='time-entry'>
                     <div className='rank-label'>
@@ -78,7 +83,19 @@ export default function WinScreen() {
                         </div>
                     ) 
                 })}
+            </div>;
+    } else if (allTimes.length === 0) {
+        introText = <> Loading... </>;
+        allTimesContent = <></>;
+    }
+
+    return (
+        <div className='win-screen'>
+            <div className='win-bg'></div>
+            <div className='win-details'>
+                {introText}
             </div>
+                {allTimesContent}
             <img
                 alt='portrait of Hieronymus Bosch'
                 className='bosch-portrait'
