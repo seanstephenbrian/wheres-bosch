@@ -1,3 +1,21 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 @font-face {
     font-family: 'Equateur';
     src: url('../fonts/equateur/equateur.ttf');
@@ -57,8 +75,10 @@ table {
     --rvv: calc(1rem + 1vh + 1vw);
 
     // colors:
-    --site-blue: #287174;
-    --site-green: #48a55c;
+    --blue: #287174;
+    --darker-green: #2e783e;
+    --green: #48a55c;
+    --yellow: #fce366;
 }
 
 

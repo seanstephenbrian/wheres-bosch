@@ -20,12 +20,12 @@
     animation: 4s ease-in-out 0s fadeIn forwards;
 
     .time-text {
-        color: var(--site-green);
+        color: var(--green);
         text-align: center;
         font-size: calc(var(--rvv));
         background-color: #ddffe3d5;
         padding: 10px 10px 5px;
-        border: 3px solid var(--site-green);
+        border: 3px solid var(--green);
         border-radius: 10px;
     }
 }

@@ -1,21 +1,3 @@
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
 @keyframes shiftLeft {
     0% {
     }
@@ -54,7 +36,7 @@
     position: relative;
     background-color: white;
     background-image: url('../img/welcome-bg.jpg');
-    background-size: contain;
+    background-size: cover;
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
@@ -83,7 +65,7 @@
         }
 
         .open-left {
-            animation: 3.5s ease-in-out openLeft forwards;
+            animation: 5s ease-in-out openLeft forwards;
         }
 
         .right-panel {
@@ -91,7 +73,7 @@
         }
 
         .open-right {
-            animation: 3.5s ease-in-out openRight forwards;
+            animation: 5s ease-in-out openRight forwards;
         }
     }
 
@@ -118,22 +100,22 @@
 
         .wheres-bosch,
         .click-to-begin {
-            color: #2e783e;
-            background-color: rgb(202, 202, 95);
-            border: 3px solid #2e783e;
+            color: var(--darker-green);
+            background-color: var(--yellow);
+            border: 3px solid var(--darker-green);
         }
 
         .message-1,
         .message-3 {
-            color: var(--site-green);
-            border: 3px solid var(--site-green);
+            color: var(--green);
+            border: 3px solid var(--green);
             background-color: #ddffe3f4;
         }
 
         .message-2,
         .message-4 {
-            color: var(--site-blue);
-            border: 3px solid var(--site-blue);
+            color: var(--blue);
+            border: 3px solid var(--blue);
             background-color: #c9fdfff1;
         }
 

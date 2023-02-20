@@ -10,7 +10,7 @@ function Garden(props) {
 
     // props:
     const {
-        alertLoaded, 
+        setStartButton,
         items,
         relayItemFind
     } = props;
@@ -30,7 +30,7 @@ function Garden(props) {
     // hooks:
     useEffect(() => {
 
-        // only start timer after image is fully loaded:
+        // only show start button after image is fully loaded:
         const painting = document.querySelector('.painting-itself');
         
         async function loadImage(src, image) {
@@ -41,7 +41,7 @@ function Garden(props) {
             });
         }
 
-        loadImage(ThePainting, painting).then(() => alertLoaded());
+        loadImage(ThePainting, painting).then(() => setStartButton('active'));
 
     }, []);
 

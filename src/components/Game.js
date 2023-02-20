@@ -56,6 +56,8 @@ export default function Game() {
 
     const [onUsernameScreen, setOnUsernameScreen] = useState(false);
 
+    const [startButtonStatus, setStartButtonStatus] = useState('initializing');
+
     const [startTime, setStartTime] = useState();
 
     const [username, setUsername] = useState('');
@@ -126,28 +128,52 @@ export default function Game() {
                 username={username}
             />
         )
-    } else if (!onWelcomeScreen && !onUsernameScreen && !endTime) {
+    // possible conditions for game screen WITHOUT end time:
+    } else if (!endTime) {
         return (
             <>
-                <TimeDisplay
-                    endTime={false}
-                    gameWon={gameWon}
-                    startTime={startTime}
-                />
+                {/* show the Garden image and the Legend no matter what: */}
                 <Garden
-                    alertLoaded={startTimer}
+                    setStartButton={(status) => setStartButtonStatus(status)}
                     items={items}
                     relayItemFind={updateFoundStatus}
-                />
-                <FoundMarkers
-                    gameState={items}
                 />
                 <Legend 
                     items={items}
                 />
+
+                {/* show the Start Timer button if it is active: */}
+                {startButtonStatus === 'active' ?
+                    <div className='start-button-container'>
+                        <div 
+                            className='start-button' 
+                            onClick={() => {
+                                startTimer();
+                                setStartButtonStatus('inactive');
+                            }}
+                        >
+                            Start Timer
+                        </div>
+                    </div>
+                : ''}
+
+                {/* only display TimeDisplay and FoundMarkers after Start Timer button has been clicked: */}
+                {startButtonStatus === 'inactive' ? <>
+
+                    <TimeDisplay
+                        endTime={false}
+                        gameWon={gameWon}
+                        startTime={startTime}
+                    />
+                    <FoundMarkers
+                        gameState={items}
+                    />
+
+                </> : ''} 
             </>
         )
-    } else if (!onWelcomeScreen && !onUsernameScreen && endTime) {
+    // game screen with end time:
+    } else if (endTime) {
         return (
             <>
                 <TimeDisplay
