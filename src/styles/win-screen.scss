@@ -1,12 +1,3 @@
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 @keyframes slideIn {
     0% {
         transform: translateX(100%);
@@ -23,7 +14,8 @@ $chart-gap: calc(0.5*var(--rvv));
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background-color: black;
+    background-color: white;
+    animation: 3s ease-out 0s fadeIn forwards;
 
     .win-bg {
         position: absolute;
@@ -33,8 +25,6 @@ $chart-gap: calc(0.5*var(--rvv));
         width: 100vw;
         background-image: url('../img/win-screen-bg.jpg');
         background-size: cover;
-        opacity: 0;
-        animation: 3s ease-out 0s fadeIn forwards;
     }
 
     .win-details,
@@ -107,7 +97,7 @@ $chart-gap: calc(0.5*var(--rvv));
         right: 0;
         max-height: 70vh;
         transform: translateX(100%);
-        animation: 1.8s ease-in-out 0.4s slideIn forwards;
+        animation: 1.8s ease-in-out 3s slideIn forwards;
     }
 }
 

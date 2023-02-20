@@ -27,17 +27,17 @@ export default function Game() {
     const [items, setItems] = useState([
         {
             name: 'ballhead',
-            found: true,
+            found: false,
             src: Ballhead
         },
         {
             name: 'bosch himself',
-            found: true,
+            found: false,
             src: Bosch
         },
         {
             name: 'drummer',
-            found: true,
+            found: false,
             src: Drummer
         },
         {
@@ -47,7 +47,7 @@ export default function Game() {
         },
         {
             name: 'stabbed hand',
-            found: true,
+            found: false,
             src: StabbedHand
         }
     ]);
@@ -72,8 +72,11 @@ export default function Game() {
         if (foundCount === 5) {
             const endTime = DateTime.now();
             setGameWon(true);
+
             const garden = document.querySelector('.garden');
             garden.classList.add('faster-fade-out');
+            const foundMarkers = document.querySelector('.found-markers');
+            foundMarkers.classList.add('faster-fade-out');
 
             setTimeout(() => {
                 setEndTime(endTime);
