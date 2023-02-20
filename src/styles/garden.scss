@@ -69,7 +69,8 @@ $width: calc($height * 1.79372197309);
         border: 3px solid var(--darker-green);
         border-radius: 25px;
         cursor: pointer;
-        animation: 2s ease-in-out 16s fadeIn forwards;
+        opacity: 0;
+        animation: 4s ease-in-out 0s fadeIn forwards;
         font-size: calc(1.5*var(--rvv));
         transition: transform 0.2s ease-in-out;
     }

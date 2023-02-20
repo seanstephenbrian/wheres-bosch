@@ -56,12 +56,17 @@ export default function TimeDisplay(props) {
     
     // render:
     if (startTime) {
-        return (
-            <div className='time-display'>
-                <span className='time-text'>
-                    {timeText}
-                </span>
-            </div>
-        )
+        // don't show the timer at all if game is over but game screen is still fading out:
+        if (gameWon && !endTime) {
+            return;
+        } else {
+            return (
+                <div className='time-display'>
+                    <span className='time-text'>
+                        {timeText}
+                    </span>
+                </div>
+            )
+        }
     }
 }

@@ -70,9 +70,14 @@ export default function Game() {
             if (item.found) foundCount++;
         });
         if (foundCount === 5) {
-            const now = DateTime.now();
-            setEndTime(now);
+            const endTime = DateTime.now();
             setGameWon(true);
+            const garden = document.querySelector('.garden');
+            garden.classList.add('faster-fade-out');
+
+            setTimeout(() => {
+                setEndTime(endTime);
+            }, 3000);
         }
     }, [items]);
 
