@@ -45,3 +45,36 @@ $width: calc($height * 1.79372197309);
         }
     }
 }
+
+.start-button-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15vh;
+
+    .start-button {
+        margin: 0 calc(var(--rvv));
+        font-size: calc(var(--rvv));
+        padding: 15px 15px 5px;
+        text-align: center;
+        width: fit-content;
+        color: var(--darker-green);
+        background-color: var(--yellow);
+        border: 3px solid var(--darker-green);
+        border-radius: 25px;
+        cursor: pointer;
+        animation: 2s ease-in-out 16s fadeIn forwards;
+        font-size: calc(1.5*var(--rvv));
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .start-button:hover {
+        transform: scale(1.05);
+    }
+}

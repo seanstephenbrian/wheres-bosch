@@ -52,11 +52,11 @@ export default function Game() {
         }
     ]);
 
-    const [onWelcomeScreen, setOnWelcomeScreen] = useState(true);
+    const [onWelcomeScreen, setOnWelcomeScreen] = useState(false);
 
     const [onUsernameScreen, setOnUsernameScreen] = useState(false);
 
-    const [startButtonStatus, setStartButtonStatus] = useState('initializing');
+    const [startButtonStatus, setStartButtonStatus] = useState('active');
 
     const [startTime, setStartTime] = useState();
 
@@ -81,6 +81,20 @@ export default function Game() {
         const userTime = endTime - startTime;
         if (!isNaN(userTime)) recordTime(firebaseData, userTime, username);
     }, [endTime, startTime, username]);
+
+    // disable scrolling if start button is shown:
+    useEffect(() => {
+        const body = document.querySelector('body');
+        const html = document.querySelector('html');
+
+        if (startButtonStatus === 'active') {
+            body.style.overflow = 'hidden';
+            html.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = 'initial';
+            html.style.overflow = 'initial';
+        }
+    }, [startButtonStatus]);
 
     // methods:
     function getUsername() {
@@ -128,7 +142,7 @@ export default function Game() {
                 username={username}
             />
         )
-    // possible conditions for game screen WITHOUT end time:
+    // render conditions for active game:
     } else if (!endTime) {
         return (
             <>
@@ -152,7 +166,7 @@ export default function Game() {
                                 setStartButtonStatus('inactive');
                             }}
                         >
-                            Start Timer
+                            Click to Start the Timer
                         </div>
                     </div>
                 : ''}
@@ -172,7 +186,7 @@ export default function Game() {
                 </> : ''} 
             </>
         )
-    // game screen with end time:
+    // render condition for finished game:
     } else if (endTime) {
         return (
             <>
