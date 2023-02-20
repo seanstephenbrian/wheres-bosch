@@ -3,6 +3,7 @@ import React from 'react';
 import '../styles/username-screen.scss';
 
 export default function UsernameScreen(props) {
+    
     const { 
         startGame,
         updateUsername,

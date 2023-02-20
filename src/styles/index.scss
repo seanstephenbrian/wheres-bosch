@@ -16,6 +16,14 @@
     }
 }
 
+.fade-out {
+    animation: 5s linear 0s fadeOut forwards;
+}
+
+.faster-fade-out {
+    animation: 3s linear 0s fadeOut forwards;
+}
+
 @font-face {
     font-family: 'Equateur';
     src: url('../fonts/equateur/equateur.ttf');
@@ -86,4 +94,3 @@ html {
     box-sizing: border-box;
     font-family: 'Novelist', 'Times New Roman', Times, serif;
 }
-

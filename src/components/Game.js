@@ -27,17 +27,17 @@ export default function Game() {
     const [items, setItems] = useState([
         {
             name: 'ballhead',
-            found: false,
+            found: true,
             src: Ballhead
         },
         {
             name: 'bosch himself',
-            found: false,
+            found: true,
             src: Bosch
         },
         {
             name: 'drummer',
-            found: false,
+            found: true,
             src: Drummer
         },
         {
@@ -47,16 +47,16 @@ export default function Game() {
         },
         {
             name: 'stabbed hand',
-            found: false,
+            found: true,
             src: StabbedHand
         }
     ]);
 
-    const [onWelcomeScreen, setOnWelcomeScreen] = useState(false);
+    const [onWelcomeScreen, setOnWelcomeScreen] = useState(true);
 
     const [onUsernameScreen, setOnUsernameScreen] = useState(false);
 
-    const [startButtonStatus, setStartButtonStatus] = useState('active');
+    const [startButtonStatus, setStartButtonStatus] = useState('initializing');
 
     const [startTime, setStartTime] = useState();
 
@@ -103,7 +103,11 @@ export default function Game() {
     }
 
     function startGame() {
-        setOnUsernameScreen(false);
+        const usernameScreen = document.querySelector('.username-screen');
+        usernameScreen.classList.add('faster-fade-out');
+        setTimeout(() => {
+            setOnUsernameScreen(false);
+        }, 3000);
     }
 
     function startTimer() {
