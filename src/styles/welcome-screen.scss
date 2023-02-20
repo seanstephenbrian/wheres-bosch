@@ -1,34 +1,16 @@
-@keyframes shiftLeft {
-    0% {
-    }
-    100% {
-        transform: translateX(-10vw);
-    }
-}
-
-@keyframes shiftRight {
-    0% {
-    }
-    100% {
-        transform: translateX(10vw);
-    }
-}
-
 @keyframes openLeft {
     0% {
-        transform: translateX(-10vw);
     }
     100% {
-        transform: translateX(-10vw) rotateY(-180deg);
+        transform: translateX(-50%) rotateY(-180deg);
     }
 }
 
 @keyframes openRight {
     0% {
-        transform: translateX(10vw);
     }
     100% {
-        transform: translateX(10vw) rotateY(180deg);
+        transform: translateX(50%) rotateY(180deg);
     }
 }
 
@@ -47,7 +29,7 @@
         height: 100%;
         display: flex;
         justify-content: center;
-        gap: 5px;
+        gap: 2px;
         opacity: 0;
         animation: 1.5s linear 0s fadeIn forwards;
 
@@ -60,16 +42,8 @@
             }
         }
 
-        .left-panel {
-            animation: 3s ease-in-out 2s shiftLeft forwards;
-        }
-
         .open-left {
             animation: 5s ease-in-out openLeft forwards;
-        }
-
-        .right-panel {
-            animation: 3s ease-in-out 2s shiftRight forwards;
         }
 
         .open-right {
@@ -121,7 +95,7 @@
 
         .wheres-bosch {
             font-size: calc(2*var(--rvv));
-            animation: 2s ease-in-out 5s fadeIn forwards;
+            animation: 2s ease-in-out 3s fadeIn forwards;
 
             .bosch-portrait {
                 height: 100px;
@@ -129,25 +103,25 @@
         }
 
         .message-1 {
-            animation: 2s ease-in-out 8s fadeIn forwards;
+            animation: 2s ease-in-out 6s fadeIn forwards;
         }
 
         .message-2 {
-            animation: 2s ease-in-out 10s fadeIn forwards;
+            animation: 2s ease-in-out 8s fadeIn forwards;
         }
 
         .message-3 {
-            animation: 2s ease-in-out 12s fadeIn forwards;
+            animation: 2s ease-in-out 10s fadeIn forwards;
         }
 
         .message-4 {
-            animation: 2s ease-in-out 14s fadeIn forwards;
+            animation: 2s ease-in-out 12s fadeIn forwards;
         }
 
         .click-to-begin {
             border-radius: 25px;
             cursor: pointer;
-            animation: 2s ease-in-out 16s fadeIn forwards;
+            animation: 2s ease-in-out 14s fadeIn forwards;
             font-size: calc(1.5*var(--rvv));
             transition: transform 0.2s ease-in-out;
         }
