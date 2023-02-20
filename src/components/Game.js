@@ -32,22 +32,22 @@ export default function Game() {
         },
         {
             name: 'bosch himself',
-            found: true,
+            found: false,
             src: Bosch
         },
         {
             name: 'drummer',
-            found: true,
+            found: false,
             src: Drummer
         },
         {
             name: 'reading creature',
-            found: true,
+            found: false,
             src: Reader
         },
         {
             name: 'stabbed hand',
-            found: true,
+            found: false,
             src: StabbedHand
         }
     ]);
