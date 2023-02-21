@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wheres-bosch/static/css/main.60e78bef.css",
-    "main.js": "/wheres-bosch/static/js/main.c8b02a33.js",
+    "main.css": "/wheres-bosch/static/css/main.bcb66e83.css",
+    "main.js": "/wheres-bosch/static/js/main.3bc8e592.js",
     "static/media/garden.jpg": "/wheres-bosch/static/media/garden.b010a7016a63764a7822.jpg",
     "static/media/win-screen-bg.jpg": "/wheres-bosch/static/media/win-screen-bg.a31a141f5717979c6e6d.jpg",
     "static/media/bosch-portrait.png": "/wheres-bosch/static/media/bosch-portrait.7ae9b63a54663be779ba.png",
@@ -17,11 +17,11 @@
     "static/media/ballhead.png": "/wheres-bosch/static/media/ballhead.fefbbeb1e1c5b88307d8.png",
     "static/media/beowulf-ot.otf": "/wheres-bosch/static/media/beowulf-ot.1989440c95d6aa634b56.otf",
     "index.html": "/wheres-bosch/index.html",
-    "main.60e78bef.css.map": "/wheres-bosch/static/css/main.60e78bef.css.map",
-    "main.c8b02a33.js.map": "/wheres-bosch/static/js/main.c8b02a33.js.map"
+    "main.bcb66e83.css.map": "/wheres-bosch/static/css/main.bcb66e83.css.map",
+    "main.3bc8e592.js.map": "/wheres-bosch/static/js/main.3bc8e592.js.map"
   },
   "entrypoints": [
-    "static/css/main.60e78bef.css",
-    "static/js/main.c8b02a33.js"
+    "static/css/main.bcb66e83.css",
+    "static/js/main.3bc8e592.js"
   ]
 }
