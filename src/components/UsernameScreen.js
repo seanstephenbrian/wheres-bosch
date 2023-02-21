@@ -14,7 +14,7 @@ export default function UsernameScreen(props) {
         <div className='username-screen'>
             <div className='container'>
                 <div className='instructions'>
-                    Please enter your name to begin:
+                    Please enter your name:
                 </div>
                 <input
                     className='name-input'
@@ -28,7 +28,7 @@ export default function UsernameScreen(props) {
                     className='save-name-button'
                     onClick={startGame}
                 >
-                    Start Game
+                    START
                 </div>
             </div>
         </div>

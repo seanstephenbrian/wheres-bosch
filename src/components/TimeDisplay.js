@@ -26,15 +26,18 @@ export default function TimeDisplay(props) {
 
     // methods:
     function formatTime(timeInMs) {
-        if (timeInMs >= 60000) {
+        if (timeInMs < 1000) {
+            return '0 SECONDS';
+        } else if (timeInMs >= 1000 && timeInMs < 2000) {
+            return '1 SECOND';
+        } else if (timeInMs < 60000) {
+            const sec = Math.trunc(timeInMs / 1000);
+            return `${sec} SECONDS`;
+        } else if (timeInMs >= 60000) {
             const min = Math.trunc(timeInMs / 60000);
             const minRemainder = timeInMs % 60000;
             const sec = Math.trunc(minRemainder / 1000);
-            return `${min} minutes, ${sec} seconds`;
-        }
-        if (timeInMs < 60000) {
-            const sec = Math.trunc(timeInMs / 1000);
-            return `${sec} seconds`;
+            return `${min} MINUTES, ${sec} SECONDS`;
         }
     }      
 

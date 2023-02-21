@@ -1,4 +1,5 @@
 .username-screen {
+    font-family: 'Beowulf';
     height: 100vh;
     width: 100vw;
     background-color: white;
@@ -27,7 +28,7 @@
         gap: calc(var(--rvv));
 
         .name-input {
-            font-family: 'Novelist';
+            font-family: 'Beowulf';
             font-size: calc(0.8*var(--rvv));
             color: var(--darker-green);
             outline: none;
@@ -38,13 +39,14 @@
         }
 
         .save-name-button {
+            font-family: 'Cerne';
             cursor: pointer;
             width: fit-content;
-            padding: calc(0.5*var(--rvv)) calc(0.5*var(--rvv)) calc(0.3*var(--rvv));
+            padding: calc(0.5*var(--rvv));
             color: var(--yellow);
             border: 3px solid var(--darker-green);
             border-radius: 25px;
-            background-color: var(--green);
+            background-color: #58c870;
             transition: transform 0.2s ease-in-out;
         }
 

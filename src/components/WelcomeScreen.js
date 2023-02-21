@@ -65,7 +65,7 @@ export default function WelcomeScreen(props) {
                     className='message click-to-begin'
                     onClick={transitionOut}
                 >
-                   Click here to begin
+                   CLICK TO BEGIN
                 </div>
             </div>
         </div>

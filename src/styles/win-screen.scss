@@ -29,6 +29,7 @@ $chart-gap: calc(0.5*var(--rvv));
 
     .win-details,
     .all-times {
+        font-family: 'Beowulf';
         z-index: 1;
         width: 20vw;
         min-width: 300px;
@@ -48,12 +49,12 @@ $chart-gap: calc(0.5*var(--rvv));
         justify-content: center;
         align-items: center;
         text-align: center;
-        font-size: calc(0.6*var(--rvv));
+        font-size: calc(0.9*var(--rvv));
     }
 
     .all-times {
         position: relative;
-        font-size: calc(0.6*var(--rvv));
+        font-size: calc(0.8*var(--rvv));
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -72,6 +73,7 @@ $chart-gap: calc(0.5*var(--rvv));
             .rank-label,
             .name-label,
             .time-label {
+                font-family: 'Cerne';
                 text-decoration: underline;
             }
 

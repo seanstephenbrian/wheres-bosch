@@ -8,10 +8,12 @@
 }
 
 .legend {
+    font-family: 'Cerne';
     z-index: 2;
     position: fixed;
     bottom: 20px;
     left: 50%;
+    max-width: 95vw;
     transform: translateX(-50%);
     color: var(--green);
     font-size: calc(var(--rvv));
