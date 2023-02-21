@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/wheres-bosch/static/css/main.60e78bef.css",
+    "main.js": "/wheres-bosch/static/js/main.c8b02a33.js",
+    "static/media/garden.jpg": "/wheres-bosch/static/media/garden.b010a7016a63764a7822.jpg",
+    "static/media/win-screen-bg.jpg": "/wheres-bosch/static/media/win-screen-bg.a31a141f5717979c6e6d.jpg",
+    "static/media/bosch-portrait.png": "/wheres-bosch/static/media/bosch-portrait.7ae9b63a54663be779ba.png",
+    "static/media/bosch.png": "/wheres-bosch/static/media/bosch.945316cbd5638716faee.png",
+    "static/media/reader.png": "/wheres-bosch/static/media/reader.83e0bd73192bac6f54d0.png",
+    "static/media/welcome-bg.jpg": "/wheres-bosch/static/media/welcome-bg.a9c3e44f143d0c5fd88b.jpg",
+    "static/media/left-panel.jpg": "/wheres-bosch/static/media/left-panel.3d6cb4f39d049246e877.jpg",
+    "static/media/cerne.otf": "/wheres-bosch/static/media/cerne.10387e873e554bee716c.otf",
+    "static/media/username-screen-bg.jpg": "/wheres-bosch/static/media/username-screen-bg.25c3691eb8d46f2795e1.jpg",
+    "static/media/right-panel.jpg": "/wheres-bosch/static/media/right-panel.24265eb4acfd3d9d0abc.jpg",
+    "static/media/drummer.png": "/wheres-bosch/static/media/drummer.b5a4343038994b3613db.png",
+    "static/media/hand.png": "/wheres-bosch/static/media/hand.e45937bc2932970e0af0.png",
+    "static/media/ballhead.png": "/wheres-bosch/static/media/ballhead.fefbbeb1e1c5b88307d8.png",
+    "static/media/beowulf-ot.otf": "/wheres-bosch/static/media/beowulf-ot.1989440c95d6aa634b56.otf",
+    "index.html": "/wheres-bosch/index.html",
+    "main.60e78bef.css.map": "/wheres-bosch/static/css/main.60e78bef.css.map",
+    "main.c8b02a33.js.map": "/wheres-bosch/static/js/main.c8b02a33.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.60e78bef.css",
+    "static/js/main.c8b02a33.js"
+  ]
+}
