@@ -1,31 +1,17 @@
-@keyframes slideLeft {
+@keyframes openLeft {
     0% {
     }
     100% {
-        transform: translateX(-50%);
-    }
-}
-
-@keyframes rotateLeft {
-    0% {
-    }
-    100% {
+        transform-origin: left;
         transform: rotateY(-180deg);
     }
 }
 
-@keyframes slideRight {
+@keyframes openRight {
     0% {
     }
     100% {
-        transform: translateX(50%);
-    }
-}
-
-@keyframes rotateRight {
-    0% {
-    }
-    100% {
+        transform-origin: right;
         transform: rotateY(180deg);
     }
 }
@@ -59,11 +45,11 @@
         }
 
         .open-left {
-            animation: 5s linear slideLeft forwards, 5s linear rotateLeft forwards;
+            animation: 5s linear openLeft forwards;
         }
 
         .open-right {
-            animation: 5s linear slideRight forwards, 5s linear rotateRight forwards;
+            animation: 5s linear openRight forwards;
         }
     }
 
